@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'Provider/DateTimeProvider.dart';
+import 'Screens/Login_Screen.dart';
 import 'Screens/Splash_Screen.dart';
 
 void main() {
@@ -12,6 +15,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context)=>DateTimeProvider())
+        ],
+    child: MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen()));
   }
 }
